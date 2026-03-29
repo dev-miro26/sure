@@ -723,6 +723,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_05_08_130000) do
     t.text "actions"
     t.integer "source_row_number", null: false
     t.index ["import_id", "source_row_number"], name: "index_import_rows_on_import_id_and_source_row_number", unique: true
+    t.string "fee"
     t.index ["import_id"], name: "index_import_rows_on_import_id"
     t.check_constraint "source_row_number > 0", name: "chk_import_rows_source_row_number_positive"
   end
@@ -1556,7 +1557,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_05_08_130000) do
     t.string "currency"
     t.jsonb "locked_attributes", default: {}
     t.string "investment_activity_label"
-    t.decimal "fee", precision: 19, scale: 4, default: "0.0", null: false
+    t.decimal "fee", precision: 19, scale: 4, default: "0.0"
     t.index ["investment_activity_label"], name: "index_trades_on_investment_activity_label"
     t.index ["security_id"], name: "index_trades_on_security_id"
   end
